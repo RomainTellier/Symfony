@@ -1,0 +1,4 @@
+rt_platform:
+    resource: "@RTPlatformBundle/Resources/config/routing.yml"
+    prefix:   /
+

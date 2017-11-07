@@ -1,0 +1,4 @@
+services:
+#    rt_platform.example:
+#        class: RT\PlatformBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

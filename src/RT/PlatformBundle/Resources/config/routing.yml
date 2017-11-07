@@ -1,0 +1,22 @@
+
+#hello_the_world:
+#    path:     /hello-world
+#    defaults: { _controller: RTPlatformBundle:Advert:index }
+#
+#
+#bye_world:
+#    path: /byebye-world
+#    defaults: { _controller: RTPlatformBundle:Advert:page2}
+#
+
+rt_platform_home:
+    path:      /platform
+    defaults: { _controller: RTPlatformBundle:Advert:index }
+
+rt_platform_view:
+    path:      /platform/advert/{id}
+    defaults: { _controller: RTPlatformBundle:Advert:view }
+
+rt_platform_add:
+    path:      /platform/add
+    defaults: { _controller: RTPlatformBundle:Advert:add }
