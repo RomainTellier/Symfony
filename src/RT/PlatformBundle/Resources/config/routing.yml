@@ -1,3 +1,36 @@
+rt_platform_home:
+    path:      /{page}
+    defaults:
+        _controller: RTPlatformBundle:Advert:index
+        page:        1
+    requirements:
+        page: \d*
+    
+rt_platform_view:
+    path:      /advert/{id}
+    defaults:
+        _controller: RTPlatformBundle:Advert:view
+    requirements:
+        id: \d+
+
+rt_platform_add:
+    path:      /add
+    defaults:
+        _controller: RTPlatformBundle:Advert:add
+
+rt_platform_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: RTPlatformBundle:Advert:edit
+    requirements:
+        id: \d+
+
+rt_platform_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: RTPlatformBundle:Advert:delete
+    requirements:
+        id: \d+
 
 #hello_the_world:
 #    path:     /hello-world
@@ -8,15 +41,25 @@
 #    path: /byebye-world
 #    defaults: { _controller: RTPlatformBundle:Advert:page2}
 #
-
-rt_platform_home:
-    path:      /platform
-    defaults: { _controller: RTPlatformBundle:Advert:index }
-
-rt_platform_view:
-    path:      /platform/advert/{id}
-    defaults: { _controller: RTPlatformBundle:Advert:view }
-
-rt_platform_add:
-    path:      /platform/add
-    defaults: { _controller: RTPlatformBundle:Advert:add }
+#
+#rt_platform_home:
+#    path:      /platform
+#    defaults: { _controller: RTPlatformBundle:Advert:index }
+#
+#rt_platform_view:
+#    path:      /platform/advert/{id}
+#    defaults: { _controller: RTPlatformBundle:Advert:view }
+#
+#
+#rt_platform_view_slug:
+#    path:      /platform/{year}/{slug}.{format}
+#    defaults:
+#        _controller: RTPlatformBundle:Advert:viewSlug
+#        format:      html
+#    requirements:
+#            year:   \d{4}
+#            format: html|xml
+#
+#rt_platform_add:
+#    path:      /platform/add
+#    defaults: { _controller: RTPlatformBundle:Advert:add }
