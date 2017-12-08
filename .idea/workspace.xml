@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a00dfaee-8266-4a28-8513-b205286c7672" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Symfony.iml" afterPath="$PROJECT_DIR$/.idea/Symfony.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config_dev.yml" afterPath="$PROJECT_DIR$/app/config/config_dev.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/page2.html.twig" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/page2.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/var/SymfonyRequirements.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app.php" afterPath="$PROJECT_DIR$/web/app.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
-    </list>
+    <list default="true" id="a00dfaee-8266-4a28-8513-b205286c7672" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -516,12 +505,12 @@
       <workItem from="1510243723408" duration="518000" />
       <workItem from="1510307089139" duration="2487000" />
       <workItem from="1512722601753" duration="7104000" />
-      <workItem from="1512738159178" duration="3253000" />
+      <workItem from="1512738159178" duration="3390000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20839000" />
+    <option name="totallyTimeSpent" value="20976000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1370" height="744" extended-state="1" />
