@@ -5,45 +5,161 @@ namespace RT\PlatformBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 class AdvertController extends Controller
 {
-
-    // La route fait appel à OCPlatformBundle:Advert:view,
-    // on doit donc définir la méthode viewAction.
-    // On donne à cette méthode l'argument $id, pour
-    // correspondre au paramètre {id} de la route
-    public function viewAction($id, Request $request)
+    public function indexAction($page)
     {
-        // On récupère notre paramètre tag
-        $tag = $request->query->get('tag');
+        // On ne sait pas combien de pages il y a
+        // Mais on sait qu'une page doit être supérieure ou égale à 1
+        if ($page < 1) {
+            // On déclenche une exception NotFoundHttpException, cela va afficher
+            // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
+            throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
+        }
 
-        return new Response(
-            "Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
-        );
+        // Ici, on récupérera la liste des annonces, puis on la passera au template
+
+        // Mais pour l'instant, on ne fait qu'appeler le template
+        return $this->render('RTPlatformBundle:Advert:index.html.twig');
     }
 
-    // On récupère tous les paramètres en arguments de la méthode
-    public function viewSlugAction($slug, $year, $format)
+    public function viewAction($id)
     {
-        return new Response(
-            "On pourrait afficher l'annonce correspondant au
-            slug '".$slug."', créée en ".$year." et au format ".$format."."
-        );
+        // Ici, on récupérera l'annonce correspondante à l'id $id
+
+        return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
+            'id' => $id
+        ));
     }
 
-	public function indexAction()
-	{
-		$content = $this->get('templating')->render('RTPlatformBundle:Advert:index.html.twig', array('nom' => 'RomainTheBOSS'));
+    public function addAction(Request $request)
+    {
+        // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
 
-		return new Response($content);
-	}
+        // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
+        if ($request->isMethod('POST')) {
+            // Ici, on s'occupera de la création et de la gestion du formulaire
 
-	public function page2Action()
-	{
-		$content = $this->get('templating')->render('RTPlatformBundle:Advert:page2.html.twig', array('nom' => 'RomainLekéké'));
+            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
 
-		return new Response($content);
-	}
+            // Puis on redirige vers la page de visualisation de cettte annonce
+            return $this->redirectToRoute('rt_platform_view', array('id' => 5));
+        }
+
+        // Si on n'est pas en POST, alors on affiche le formulaire
+        return $this->render('RTPlatformBundle:Advert:add.html.twig');
+    }
+
+    public function editAction($id, Request $request)
+    {
+        // Ici, on récupérera l'annonce correspondante à $id
+
+        // Même mécanisme que pour l'ajout
+        if ($request->isMethod('POST')) {
+            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien modifiée.');
+
+            return $this->redirectToRoute('rt_platform_view', array('id' => 5));
+        }
+
+        return $this->render('RTPlatformBundle:Advert:edit.html.twig');
+    }
+
+    public function deleteAction($id)
+    {
+        // Ici, on récupérera l'annonce correspondant à $id
+
+        // Ici, on gérera la suppression de l'annonce en question
+
+        return $this->render('RTPlatformBundle:Advert:delete.html.twig');
+    }
 }
+
+//class AdvertController extends Controller
+//{
+//
+//    // La route fait appel à RTPlatformBundle:Advert:view,
+//    // on doit donc définir la méthode viewAction.
+//    // On donne à cette méthode l'argument $id, pour
+//    // correspondre au paramètre {id} de la route
+//    public function viewAction($id, Request $request)
+//    {
+//        // Récupération de la session
+//        /*$session = $request->getSession();
+//
+//        // On récupère le contenu de la variable user_id
+//        $userId = $session->get('user_id');
+//
+//        // On définit une nouvelle valeur pour cette variable user_id
+//        $session->set('user_id', 91);
+//
+//        // On n'oublie pas de renvoyer une réponse
+//        return new Response("<body>Je suis une page de test, je n'ai rien à dire</body>");*/
+//
+//        // On récupère notre paramètre tag
+//        $tag = $request->query->get('tag');
+//
+//        /*return new Response(
+//            "Affichage de l'annonce d'id : ".$id.", avec le tag : ".$tag
+//        );*/
+//
+//        // On utilise le raccourci : il crée un objet Response
+//        // Et lui donne comme contenu le contenu du template
+//        /*return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
+//            'id'  => $id,
+//            'tag' => $tag,
+//        ));*/
+//
+//        // return new JsonResponse(array('id' => $id));
+//
+//        // return $this->redirectToRoute('rt_platform_home');
+//
+//        return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
+//            'id' => $id
+//        ));
+//    }
+//
+//    // On récupère tous les paramètres en arguments de la méthode
+//    public function viewSlugAction($slug, $year, $format)
+//    {
+//        return new Response(
+//            "On pourrait afficher l'annonce correspondant au
+//            slug '".$slug."', créée en ".$year." et au format ".$format."."
+//        );
+//    }
+//
+//	public function indexAction()
+//	{
+//		$content = $this->get('templating')->render('RTPlatformBundle:Advert:index.html.twig', array('nom' => 'RomainTheBOSS'));
+//
+//		return new Response($content);
+//	}
+//
+//	public function page2Action()
+//	{
+//		$content = $this->get('templating')->render('RTPlatformBundle:Advert:page2.html.twig', array('nom' => 'RomainLekéké'));
+//
+//		return new Response($content);
+//	}
+//
+//    public function addAction(Request $request)
+//    {
+//        $session = $request->getSession();
+//
+//        // Bien sûr, cette méthode devra réellement ajouter l'annonce
+//
+//        // Mais faisons comme si c'était le cas
+//        $session->getFlashBag()->add('info', 'Annonce bien enregistrée');
+//
+//        // Le « flashBag » est ce qui contient les messages flash dans la session
+//        // Il peut bien sûr contenir plusieurs messages :
+//        $session->getFlashBag()->add('info', 'Oui oui, elle est bien enregistrée !');
+//
+//        // Puis on redirige vers la page de visualisation de cette annonce
+//        return $this->redirectToRoute('rt_platform_view', array('id' => 5));
+//    }
+//}
