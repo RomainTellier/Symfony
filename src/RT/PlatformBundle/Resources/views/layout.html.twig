@@ -1,7 +1,18 @@
 {% extends "::layout.html.twig" %}
 
-{#{% block title %}{{ parent() }} - Index{% endblock %}#}
+{% block title %}
+    Annonces - {{ parent() }}
+{% endblock %}
 
 {% block body %}
-    <h2>Notre plateforme est un peu vide pour le moment, mais cela viendra !</h2>
+
+    {# On définit un sous-titre commun à toutes les pages du bundle, par exemple #}
+    <h1>Annonces</h1>
+
+    <hr>
+
+    {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
+    {% block rtplatform_body %}
+    {% endblock %}
+
 {% endblock %}
