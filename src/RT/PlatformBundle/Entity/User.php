@@ -26,6 +26,39 @@ class User extends BaseUser
      */
     protected $age;
 
+    /**
+     * @return int
+     */
+    public function getAge()
+    {
+        return $this->age;
+    }
+
+    /**
+     * @param int $age
+     */
+    public function setAge($age)
+    {
+        $this->age = $age;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+
 
     public function __construct()
     {

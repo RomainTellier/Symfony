@@ -1,5 +1,4 @@
-
-  {% extends "RTPlatformBundle::layout.html.twig" %}
+ {% extends "RTPlatformBundle::layout.html.twig" %}
 
   {% block title %}{{ parent() }} - Index{% endblock %}
 
@@ -12,4 +11,6 @@
       Il signifie énormément, car cela veut dire que vous avez
       réussi à exécuter le programme pour accomplir une tâche simple :
       afficher ce hello world !
-    </p>{% endblock %}
+    </p>
+      {{ include("RTPlatformBundle:Advert:page2.html.twig") }}
+  {% endblock %}
