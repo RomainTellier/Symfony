@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a00dfaee-8266-4a28-8513-b205286c7672" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,19 +34,11 @@
         <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
-              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+              <caret line="3" column="39" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="39" />
               <folding>
-                <marker date="1513085030074" expanded="true" signature="127:597" ph="{% block rtplatform_body ...%}" />
+                <element signature="e#360#376#0#Twig" expanded="true" />
+                <element signature="e#538#554#0#Twig" expanded="true" />
+                <element signature="e#727#745#0#Twig" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -54,51 +47,53 @@
       <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="597">
-              <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+            <state relative-caret-position="238">
+              <caret line="89" column="34" lean-forward="false" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
               <folding>
-                <element signature="e#1305#1329#1#PHP" expanded="true" />
-                <element signature="e#1711#1752#0#PHP" expanded="true" />
-                <element signature="e#2181#2205#1#PHP" expanded="true" />
-                <element signature="e#2693#2733#0#PHP" expanded="true" />
-                <element signature="e#4401#4441#0#PHP" expanded="true" />
-                <element signature="e#5564#5588#1#PHP" expanded="true" />
-                <element signature="e#5970#6010#0#PHP" expanded="true" />
-                <marker date="1513099393578" expanded="false" signature="3896:3912" ph="/advert/{id}" />
-                <marker date="1513099393578" expanded="false" signature="3975:4013" ph="RTPlatform:Advert:edit" />
-                <marker date="1513099393578" expanded="false" signature="5201:5239" ph="RTPlatform:Advert:menu" />
+                <element signature="e#49#84#0#PHP" expanded="true" />
+                <element signature="e#1692#1716#1#PHP" expanded="true" />
+                <element signature="e#2098#2139#0#PHP" expanded="true" />
+                <element signature="e#2568#2592#1#PHP" expanded="true" />
+                <element signature="e#3080#3120#0#PHP" expanded="true" />
+                <element signature="e#4016#4055#0#PHP" expanded="true" />
+                <element signature="e#4976#5016#0#PHP" expanded="true" />
+                <element signature="e#6139#6163#1#PHP" expanded="true" />
+                <element signature="e#6545#6585#0#PHP" expanded="true" />
+                <marker date="1513120270354" expanded="false" signature="4471:4487" ph="/advert/{id}" />
+                <marker date="1513120270354" expanded="false" signature="4550:4588" ph="RTPlatform:Advert:edit" />
+                <marker date="1513120270354" expanded="false" signature="5776:5814" ph="RTPlatform:Advert:menu" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php">
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-170">
-              <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
-              <folding>
-                <element signature="e#77#119#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parameters.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/parameters.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="31" lean-forward="false" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            <state relative-caret-position="34">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Theme.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Entity/Theme.php">
+      <file leaf-file-name="add.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-49">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="374">
+              <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+              <folding>
+                <element signature="e#12#46#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routing.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/config/routing.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -109,12 +104,14 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-              <folding />
+              <folding>
+                <element signature="e#115#131#0#Twig" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
@@ -122,6 +119,16 @@
               <folding>
                 <element signature="e#254#270#0#Twig" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="form.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -177,13 +184,13 @@
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/config/routing.yml" />
         <option value="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/layout.html.twig" />
-        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/edit.html.twig" />
-        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/menu.html.twig" />
-        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig" />
-        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php" />
+        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig" />
+        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig" />
+        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig" />
       </list>
     </option>
   </component>
@@ -917,12 +924,12 @@
       <workItem from="1512749707331" duration="676000" />
       <workItem from="1512979734685" duration="10366000" />
       <workItem from="1513007513777" duration="6755000" />
-      <workItem from="1513083544998" duration="5339000" />
+      <workItem from="1513083544998" duration="7029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48629000" />
+    <option name="totallyTimeSpent" value="50319000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -1220,31 +1227,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/config/routing.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/RTPlatformBundle.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1271,22 +1254,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-          <folding>
-            <marker date="1513085030074" expanded="true" signature="127:597" ph="{% block rtplatform_body ...%}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-170">
           <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
           <folding>
-            <element signature="e#77#119#0#PHP" expanded="true" />
+            <element signature="e#77#119#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1319,15 +1292,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
+          <folding>
+            <element signature="e#115#131#0#Twig" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1339,31 +1306,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-          <folding>
-            <element signature="e#1305#1329#1#PHP" expanded="true" />
-            <element signature="e#1711#1752#0#PHP" expanded="true" />
-            <element signature="e#2181#2205#1#PHP" expanded="true" />
-            <element signature="e#2693#2733#0#PHP" expanded="true" />
-            <element signature="e#4401#4441#0#PHP" expanded="true" />
-            <element signature="e#5564#5588#1#PHP" expanded="true" />
-            <element signature="e#5970#6010#0#PHP" expanded="true" />
-            <marker date="1513099393578" expanded="false" signature="3896:3912" ph="/advert/{id}" />
-            <marker date="1513099393578" expanded="false" signature="3975:4013" ph="RTPlatform:Advert:edit" />
-            <marker date="1513099393578" expanded="false" signature="5201:5239" ph="RTPlatform:Advert:menu" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="11" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="17" selection-end-column="46" />
           <folding>
             <element signature="e#254#270#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/form.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="89" column="34" lean-forward="false" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+          <folding>
+            <element signature="e#49#84#0#PHP" expanded="true" />
+            <element signature="e#1692#1716#1#PHP" expanded="true" />
+            <element signature="e#2098#2139#0#PHP" expanded="true" />
+            <element signature="e#2568#2592#1#PHP" expanded="true" />
+            <element signature="e#3080#3120#0#PHP" expanded="true" />
+            <element signature="e#4016#4055#0#PHP" expanded="true" />
+            <element signature="e#4976#5016#0#PHP" expanded="true" />
+            <element signature="e#6139#6163#1#PHP" expanded="true" />
+            <element signature="e#6545#6585#0#PHP" expanded="true" />
+            <marker date="1513120270354" expanded="false" signature="4471:4487" ph="/advert/{id}" />
+            <marker date="1513120270354" expanded="false" signature="4550:4588" ph="RTPlatform:Advert:edit" />
+            <marker date="1513120270354" expanded="false" signature="5776:5814" ph="RTPlatform:Advert:menu" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/config/routing.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="15" lean-forward="false" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="39" lean-forward="false" selection-start-line="3" selection-start-column="3" selection-end-line="3" selection-end-column="39" />
+          <folding>
+            <element signature="e#360#376#0#Twig" expanded="true" />
+            <element signature="e#538#554#0#Twig" expanded="true" />
+            <element signature="e#727#745#0#Twig" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/add.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="10" lean-forward="false" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+          <folding>
+            <element signature="e#12#46#0#Twig" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -3,12 +3,18 @@
 namespace RT\PlatformBundle\Controller;
 
 
+use RT\PlatformBundle\Entity\Theme;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
-
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AdvertController extends Controller
 {
@@ -81,20 +87,28 @@ class AdvertController extends Controller
 
     public function addAction(Request $request)
     {
-        // La gestion d'un formulaire est particulière, mais l'idée est la suivante :
+        // On crée un objet Advert
+        $theme = new Theme();
 
-        // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
-        if ($request->isMethod('POST')) {
-            // Ici, on s'occupera de la création et de la gestion du formulaire
+        // On crée le FormBuilder grâce au service form factory
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $theme);
 
-            $request->getSession()->getFlashBag()->add('notice', 'Annonce bien enregistrée.');
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
 
-            // Puis on redirige vers la page de visualisation de cettte annonce
-            return $this->redirectToRoute('rt_platform_view', array('id' => 5));
-        }
+            ->add('titre',     TextType::class)
+            ->add('save',      SubmitType::class)
+        ;
+        // Pour l'instant, pas de candidatures, catégories, etc., on les gérera plus tard
 
-        // Si on n'est pas en POST, alors on affiche le formulaire
-        return $this->render('RTPlatformBundle:Advert:add.html.twig');
+        // À partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
+
+        // On passe la méthode createView() du formulaire à la vue
+        // afin qu'elle puisse afficher le formulaire toute seule
+        return $this->render('RTPlatformBundle:Advert:add.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     public function editAction($id, Request $request)
