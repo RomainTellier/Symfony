@@ -6,16 +6,16 @@
 
 {% block rtplatform_body %}
 
-  <h2>Liste des annonces</h2>
+  <h2>Liste des thèmes</h2>
 
   <ul>
-      {% for advert in listAdverts %}
+      {% for theme in listTheme %}
         <li>
-          <a href="{{ path('rt_platform_view', {'id': advert.id}) }}">
-              {{ advert.title }}
+          <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
+              {{ theme.titre }}
           </a>
-          par {{ advert.author }},
-          le {{ advert.date|date('d/m/Y') }}
+         {# par {{ advert.author }},
+          le {{ advert.date|date('d/m/Y') }}#}
         </li>
       {% else %}
         <li>Pas (encore !) d'annonces</li>

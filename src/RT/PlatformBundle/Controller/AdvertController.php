@@ -29,31 +29,24 @@ class AdvertController extends Controller
         /*return $this->render('RTPlatformBundle:Advert:index.html.twig', array(
             'listAdverts' => array()
         ));*/
-        // Notre liste d'annonce en dur
-        $listAdverts = array(
-            array(
-                'title'   => 'Recherche développpeur Symfony',
-                'id'      => 1,
-                'author'  => 'Alexandre',
-                'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
-                'date'    => new \Datetime()),
-            array(
-                'title'   => 'Mission de webmaster',
-                'id'      => 2,
-                'author'  => 'Hugo',
-                'content' => 'Nous recherchons un webmaster capable de maintenir notre site internet. Blabla…',
-                'date'    => new \Datetime()),
-            array(
-                'title'   => 'Offre de stage webdesigner',
-                'id'      => 3,
-                'author'  => 'Mathieu',
-                'content' => 'Nous proposons un poste pour webdesigner. Blabla…',
-                'date'    => new \Datetime())
-        );
+        // On récupère le repository
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('RTPlatformBundle:Theme')
+        ;
 
-        // Et modifiez le 2nd argument pour injecter notre liste
+        // On récupère l'entité avec tout le contneu de la DB en array
+        $listTheme = $repository->findAll();
+
+
+        // ou null si theme n'existe pas
+        if (null === $listTheme) {
+            throw new NotFoundHttpException("Il n'y a aucuns thèmes pour le moment, revenez plus tard !");
+        }
+
+        // On passe l'objet
         return $this->render('RTPlatformBundle:Advert:index.html.twig', array(
-            'listAdverts' => $listAdverts
+            'listTheme' => $listTheme
         ));
     }
 
