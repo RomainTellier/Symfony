@@ -1,0 +1,25 @@
+{% extends "RTPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Ajouter une annonce - {{ parent() }}
+{% endblock %}
+
+{% block rtplatform_body %}
+
+    <h2>Ajouter une annonce</h2>
+
+    {{ include("RTPlatformBundle:Advert:form.html.twig") }}
+
+    <p>
+        Vous allez ajouter une annonce, merci de ne pas changer
+        l'esprit général de l'annonce déjà publiée.
+    </p>
+
+    <p>
+        <a href="{{ path('rt_platform_view') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour aux annonces
+        </a>
+    </p>
+
+{% endblock %}
