@@ -58,18 +58,11 @@ class AdvertController extends Controller
 
     public function viewAction($id)
     {
-        // Ici, on récupérera l'annonce correspondante à l'id $id
-
-       /* return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
-            'id' => $id
-        ));*/
-
         // On récupère le repository
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('RTPlatformBundle:Theme')
         ;
-
         // On récupère l'entité correspondante à l'id $id
         $theme = $repository->find($id);
 
@@ -79,9 +72,17 @@ class AdvertController extends Controller
             throw new NotFoundHttpException("Le thème d'id ".$id." n'existe pas.");
         }
 
-        // Le render ne change pas, on passait avant un tableau, maintenant un objet
+        //Autre facon ici pour les discussion
+        $em = $this->getDoctrine()->getManager();
+        $listDiscussions = $em
+            ->getRepository('RTPlatformBundle:Discussion')
+            ->findBy(array('theme' => $theme))
+        ;
+
+        // on pase les objets
         return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
-            'theme' => $theme
+            'theme' => $theme,
+            'listDiscussions' => $listDiscussions
         ));
     }
 
@@ -104,11 +105,37 @@ class AdvertController extends Controller
         // À partir du formBuilder, on génère le formulaire
         $form = $formBuilder->getForm();
 
-        // On passe la méthode createView() du formulaire à la vue
-        // afin qu'elle puisse afficher le formulaire toute seule
+        // Si la requête est en POST
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $theme contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $theme dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($theme);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('notice', 'Thème bien enregistré !');
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
+            }
+        }
+
+        // À ce stade, le formulaire n'est pas valide car :
+        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
+        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('RTPlatformBundle:Advert:add.html.twig', array(
             'form' => $form->createView(),
         ));
+        // On passe la méthode createView() du formulaire à la vue
+        // afin qu'elle puisse afficher le formulaire toute seule
+
+
     }
 
     public function editAction($id, Request $request)
@@ -123,20 +150,55 @@ class AdvertController extends Controller
         }
 
         return $this->render('RTPlatformBundle:Advert:edit.html.twig');*/
+// Récupération d'une annonce déjà existante, d'id $id.
+        $theme = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('RTPlatformBundle:Theme')
+            ->find($id)
+        ;
 
-            // ...
+// Et on construit le formBuilder avec cette instance de l'annonce, comme précédemment
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $theme);
 
-            $advert = array(
-                'title'   => 'Recherche développpeur Symfony',
-                'id'      => $id,
-                'author'  => 'Alexandre',
-                'content' => 'Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…',
-                'date'    => new \Datetime()
-            );
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
+            ->add('titre',     TextType::class)
+            ->add('save',      SubmitType::class)
+        ;
+        // Pour l'instant, pas de candidatures, catégories, etc., on les gérera plus tard
 
-            return $this->render('RTPlatformBundle:Advert:edit.html.twig', array(
-                'advert' => $advert
-            ));
+        // À partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
+
+        // Si la requête est en POST
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $theme contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $theme dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($theme);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('notice', 'Thème bien enregistré !');
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
+            }
+        }
+
+        // À ce stade, le formulaire n'est pas valide car :
+        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
+        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
+        return $this->render('RTPlatformBundle:Advert:add.html.twig', array(
+            'form' => $form->createView(),
+        ));
+        // On passe la méthode createView() du formulaire à la vue
+        // afin qu'elle puisse afficher le formulaire toute seule
 
     }
 

@@ -27,5 +27,14 @@
             Supprimer l'annonce
         </a>
     </p>
+    <div>
+        {% for discussion in listDiscussions %}
+            <h4>{{ discussion.heure |date('H:i:s')}}</h4>
+            <h4>{{ discussion.date |date('Y-m-d')}}</h4>
+            <h4>{{ discussion.pseudo }}</h4>
+            <h4>{{ discussion.content }}</h4>
+            <hr>
+        {% endfor %}
+        </div>
 
 {% endblock %}
