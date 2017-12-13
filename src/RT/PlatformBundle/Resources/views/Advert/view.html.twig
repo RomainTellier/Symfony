@@ -20,11 +20,11 @@
         </a>
         <a href="{{ path('rt_platform_edit', {'id': theme.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-edit"></i>
-            Modifier l'annonce
+            Modifier le thème
         </a>
         <a href="{{ path('rt_platform_delete', {'id': theme.id}) }}" class="btn btn-danger">
             <i class="glyphicon glyphicon-trash"></i>
-            Supprimer l'annonce
+            Supprimer le thème
         </a>
     </p>
     <div>
@@ -36,5 +36,5 @@
             <hr>
         {% endfor %}
         </div>
-
+{% include ('@RTPlatform/Advert/addDiscussion.html.twig') %}
 {% endblock %}

@@ -3,8 +3,11 @@
 namespace RT\PlatformBundle\Controller;
 
 
+use RT\PlatformBundle\Entity\Discussion;
 use RT\PlatformBundle\Entity\Theme;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpFoundation\Response;
@@ -56,7 +59,7 @@ class AdvertController extends Controller
         ));
     }
 
-    public function viewAction($id)
+    public function viewAction($id, Request $request)
     {
         // On récupère le repository
         $repository = $this->getDoctrine()
@@ -79,11 +82,60 @@ class AdvertController extends Controller
             ->findBy(array('theme' => $theme))
         ;
 
+        $discussion = new Discussion();
+
+
+        // On crée le FormBuilder grâce au service form factory
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $discussion);
+
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
+            ->add('date',         DateType::class)
+            ->add('heure',        TimeType::class)
+            ->add('pseudo',       TextType::class)
+            ->add('content',      TextType::class)
+            ->add('save',         SubmitType::class)
+        ;
+
+        // À partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
+
+        // Si la requête est en POST
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $discussion contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                $discussion->setTheme($theme);
+                // On enregistre notre objet $discussion dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($discussion);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistrée !');
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
+            }
+        }
+
+        // À ce stade, le formulaire n'est pas valide car :
+        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
+        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
+
+        // On passe la méthode createView() du formulaire à la vue
+        // afin qu'elle puisse afficher le formulaire toute seule
         // on pase les objets
         return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
             'theme' => $theme,
-            'listDiscussions' => $listDiscussions
+            'listDiscussions' => $listDiscussions,
+            'form' => $form->createView(),
         ));
+
+
     }
 
     public function addAction(Request $request)
@@ -130,6 +182,67 @@ class AdvertController extends Controller
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('RTPlatformBundle:Advert:add.html.twig', array(
+            'form' => $form->createView(),
+        ));
+        // On passe la méthode createView() du formulaire à la vue
+        // afin qu'elle puisse afficher le formulaire toute seule
+
+
+    }
+
+    public function addDiscussionAction($id, Request $request)
+    {
+        // On récupère le repository
+        $repository = $this->getDoctrine()
+            ->getManager()
+            ->getRepository('RTPlatformBundle:Theme')
+        ;
+        // On récupère l'entité correspondante à l'id $id
+        $theme = $repository->find($id);
+
+        $discussion = new Discussion();
+
+        // On crée le FormBuilder grâce au service form factory
+        $formBuilder = $this->get('form.factory')->createBuilder(FormType::class, $discussion);
+
+        // On ajoute les champs de l'entité que l'on veut à notre formulaire
+        $formBuilder
+            ->add('date',         DateType::class)
+            ->add('theme_id',     NumberType::class)
+            ->add('heure',        TimeType::class)
+            ->add('pseudo',       TextType::class)
+            ->add('content',      TextType::class)
+            ->add('save',         SubmitType::class)
+        ;
+
+        // À partir du formBuilder, on génère le formulaire
+        $form = $formBuilder->getForm();
+
+        // Si la requête est en POST
+        if ($request->isMethod('POST')) {
+            // On fait le lien Requête <-> Formulaire
+            // À partir de maintenant, la variable $discussion contient les valeurs entrées dans le formulaire par le visiteur
+            $form->handleRequest($request);
+
+            // On vérifie que les valeurs entrées sont correctes
+            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
+            if ($form->isValid()) {
+                // On enregistre notre objet $discussion dans la base de données, par exemple
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($discussion);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistrée !');
+
+                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
+            }
+        }
+
+        // À ce stade, le formulaire n'est pas valide car :
+        // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
+        // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
+        return $this->render('RTPlatformBundle:Advert:addDiscussion.html.twig', array(
             'form' => $form->createView(),
         ));
         // On passe la méthode createView() du formulaire à la vue

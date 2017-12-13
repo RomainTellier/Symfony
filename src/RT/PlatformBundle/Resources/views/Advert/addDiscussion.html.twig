@@ -1,0 +1,24 @@
+
+{% block title %}
+    Ajouter une discussion
+{% endblock %}
+
+{% block rtplatform_body %}
+
+    <h2>Ajouter une discussion</h2>
+
+    {{ include("RTPlatformBundle:Advert:form.html.twig") }}
+
+    <p>
+        Vous allez ajouter une discussion, merci de ne pas changer
+        l'esprit général du forum.
+    </p>
+
+    {# <p>
+         <a href="{{ path('rt_platform_view') }}" class="btn btn-default">
+             <i class="glyphicon glyphicon-chevron-left"></i>
+             Retour aux annonces
+         </a>
+     </p>#}
+
+{% endblock %}

@@ -18,6 +18,11 @@ rt_platform_add:
     defaults:
         _controller: RTPlatformBundle:Advert:add
 
+rt_platform_addDiscussion:
+    path:      /addDiscussion
+    defaults:
+        _controller: RTPlatformBundle:Advert:addDiscussion
+
 rt_platform_edit:
     path:      /edit/{id}
     defaults:
