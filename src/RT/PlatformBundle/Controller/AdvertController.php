@@ -349,7 +349,7 @@ class AdvertController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        //$theme = $em->getRepository('RTPlatformBundle:Theme')->find($id);
+     //   $theme = $em->getRepository('RTPlatformBundle:Theme')->find();
         $discussion = $em->getRepository('RTPlatformBundle:Discussion')->find($id_discussion);
 
         if (null === $discussion) {
@@ -366,8 +366,8 @@ class AdvertController extends Controller
 
             $request->getSession()->getFlashBag()->add('info', "La discussion a bien été supprimée.");
 
-           // return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
-            return $this->redirectToRoute('rt_platform_home');
+            return $this->redirectToRoute('rt_platform_view', array('id' => $discussion->getTheme()->getId()));
+           // return $this->redirectToRoute('rt_platform_home');
         }
 
         return $this->render('RTPlatformBundle:Advert:deleteDiscussion.html.twig', array(
