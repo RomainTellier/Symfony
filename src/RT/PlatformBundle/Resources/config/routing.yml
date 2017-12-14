@@ -18,11 +18,6 @@ rt_platform_add:
     defaults:
         _controller: RTPlatformBundle:Advert:add
 
-rt_platform_addDiscussion:
-    path:      /addDiscussion
-    defaults:
-        _controller: RTPlatformBundle:Advert:addDiscussion
-
 rt_platform_edit:
     path:      /edit/{id}
     defaults:
@@ -37,6 +32,12 @@ rt_platform_delete:
     requirements:
         id: \d+
 
+rt_platform_deleteDiscussion:
+    path:      /deleteDiscussion/{id_discussion}
+    defaults:
+        _controller: RTPlatformBundle:Advert:deleteDiscussion
+    requirements:
+        id_discussion: \d+
 #hello_the_world:
 #    path:     /hello-world
 #    defaults: { _controller: RTPlatformBundle:Advert:index }

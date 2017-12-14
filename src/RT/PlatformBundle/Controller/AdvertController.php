@@ -77,6 +77,7 @@ class AdvertController extends Controller
 
         //Autre facon ici pour les discussion
         $em = $this->getDoctrine()->getManager();
+        $discussion = $em->getRepository('RTPlatformBundle:Discussion')->find($id);
         $listDiscussions = $em
             ->getRepository('RTPlatformBundle:Discussion')
             ->findBy(array('theme' => $theme))
@@ -132,6 +133,7 @@ class AdvertController extends Controller
         return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
             'theme' => $theme,
             'listDiscussions' => $listDiscussions,
+            'discussion' => $discussion,
             'form' => $form->createView(),
         ));
 
@@ -340,6 +342,36 @@ class AdvertController extends Controller
 
         return $this->render('RTPlatformBundle:Advert:delete.html.twig', array(
             'theme' => $theme,
+            'form'   => $form->createView(),
+        ));
+    }
+    public function deleteDiscussionAction(Request $request, $id_discussion)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //$theme = $em->getRepository('RTPlatformBundle:Theme')->find($id);
+        $discussion = $em->getRepository('RTPlatformBundle:Discussion')->find($id_discussion);
+
+        if (null === $discussion) {
+            throw new NotFoundHttpException("La discussion d'id ".$id_discussion." n'existe pas.");
+        }
+
+        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+        // Cela permet de protéger la suppression d'annonce contre cette faille
+        $form = $this->get('form.factory')->create();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->remove($discussion);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('info', "La discussion a bien été supprimée.");
+
+           // return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
+            return $this->redirectToRoute('rt_platform_home');
+        }
+
+        return $this->render('RTPlatformBundle:Advert:deleteDiscussion.html.twig', array(
+            'discussion' => $discussion,
             'form'   => $form->createView(),
         ));
     }

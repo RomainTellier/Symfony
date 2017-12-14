@@ -33,6 +33,11 @@
             <h4>{{ discussion.date |date('Y-m-d')}}</h4>
             <h4>{{ discussion.pseudo }}</h4>
             <h4>{{ discussion.content }}</h4>
+            <br>
+            <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer cette annonce
+            </a>
             <hr>
         {% endfor %}
         </div>
