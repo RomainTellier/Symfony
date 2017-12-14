@@ -315,13 +315,33 @@ class AdvertController extends Controller
 
     }
 
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
-        // Ici, on récupérera l'annonce correspondant à $id
+        $em = $this->getDoctrine()->getManager();
 
-        // Ici, on gérera la suppression de l'annonce en question
+        $theme = $em->getRepository('RTPlatformBundle:Theme')->find($id);
 
-        return $this->render('RTPlatformBundle:Advert:delete.html.twig');
+        if (null === $theme) {
+            throw new NotFoundHttpException("Le thème d'id ".$id." n'existe pas.");
+        }
+
+        // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+        // Cela permet de protéger la suppression d'annonce contre cette faille
+        $form = $this->get('form.factory')->create();
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->remove($theme);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('info', "Le thème a bien été supprimé.");
+
+            return $this->redirectToRoute('rt_platform_home');
+        }
+
+        return $this->render('RTPlatformBundle:Advert:delete.html.twig', array(
+            'theme' => $theme,
+            'form'   => $form->createView(),
+        ));
     }
     public function menuAction($limit)
     {
