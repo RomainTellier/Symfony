@@ -1,3 +1,4 @@
+{% if is_granted('ROLE_USER') %}
 <ul class="nav nav-pills nav-stacked">
     {% for theme in listTheme %}
         <li>
@@ -7,3 +8,4 @@
         </li>
     {% endfor %}
 </ul>
+{%  endif %}
