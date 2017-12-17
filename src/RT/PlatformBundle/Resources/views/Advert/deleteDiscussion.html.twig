@@ -1,0 +1,27 @@
+{% extends "RTPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+    Supprimer une discussion - {{ parent() }}
+{% endblock %}
+
+{% block rtplatform_body %}
+
+    <h2>Supprimer une discussion</h2>
+
+    <p>
+        Etes-vous certain de vouloir supprimer la discussion de "{{ discussion.pseudo }}" ayant pour contenu : "{{ discussion.content }}" ?
+    </p>
+
+    {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+    <form action="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" method="post">
+        {#<a href="{{ path('rt_platform_view', {'id': theme.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour au thème
+        </a>#}
+        {# Ici j'ai écrit le bouton de soumission à la main #}
+        <input type="submit" value="Supprimer" class="btn btn-danger" />
+        {# Ceci va générer le champ CSRF #}
+        {{ form_rest(form) }}
+    </form>
+
+{% endblock %}

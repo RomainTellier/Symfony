@@ -1,0 +1,11 @@
+{% if is_granted('ROLE_USER') %}
+<ul class="nav nav-pills nav-stacked">
+    {% for theme in listTheme %}
+        <li>
+            <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
+                {{ theme.titre }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+{%  endif %}

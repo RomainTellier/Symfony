@@ -1,22 +1,49 @@
+{% extends "RTPlatformBundle::layout.html.twig" %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Affichage de l'annonce {{ id }}</title>
-</head>
-<body>
-<h1>Affichage de l'annonce n°{{ id }} !</h1>
+{% block title %}
+    Lecture d'un thème - {{ parent() }}
+{% endblock %}
 
-<div>
-    {# On affiche tous les messages flash dont le nom est « info » #}
-    {% for message in app.session.flashbag.get('info') %}
-        <p>Message flash : {{ message }}</p>
-    {% endfor %}
-</div>
+{% block rtplatform_body %}
 
-<p>
-    Ici nous pourrons lire l'annonce ayant comme id : {{ id }}<br />
-    Mais pour l'instant, nous ne savons pas encore le faire, cela viendra !
-</p>
-</body>
-</html>
+    <h2>{{ theme.titre }}</h2>
+    {#<i>Par {{ advert.author }}, le {{ advert.date|date('d/m/Y') }}</i>
+
+    <div class="well">
+        {{ advert.content }}
+    </div>#}
+
+    <p>
+        <a href="{{ path('rt_platform_home') }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            Retour à la liste
+        </a>
+        <a href="{{ path('rt_platform_edit', {'id': theme.id}) }}" class="btn btn-default">
+            <i class="glyphicon glyphicon-edit"></i>
+            Modifier le thème
+        </a>
+        <a href="{{ path('rt_platform_delete', {'id': theme.id}) }}" class="btn btn-danger">
+            <i class="glyphicon glyphicon-trash"></i>
+            Supprimer le thème
+        </a>
+    </p>
+    <div>
+        {% for discussion in listDiscussions %}
+            <h4>{{ discussion.heure |date('H:i:s')}}</h4>
+            <h4>{{ discussion.date |date('Y-m-d')}}</h4>
+            <h4>{{ discussion.pseudo }}</h4>
+            <h4>{{ discussion.content }}</h4>
+            <br>
+            <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
+                <i class="glyphicon glyphicon-trash"></i>
+                Supprimer cette annonce
+            </a>
+            <a href="{{ path('rt_platform_edit_discussion', {'id': discussion.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier la discussion
+            </a>
+            <hr>
+        {% endfor %}
+        </div>
+{% include ('@RTPlatform/Advert/addDiscussion.html.twig') %}
+{% endblock %}

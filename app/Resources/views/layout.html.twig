@@ -3,15 +3,36 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %} FORUM {% endblock %}</title>
+
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    {% endblock %}
 </head>
 <body>
+<div id="menu" class="col-md-12">
+    <h3>Les annonces</h3>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="{{ path('rt_platform_home') }}">Accueil</a></li>
+        <li><a href="{{ path('rt_platform_add') }}">Ajouter une annonce</a></li>
+    </ul>
 
+    <h4>Dernières annonces</h4>
+    {{ render(controller("RTPlatformBundle:Advert:menu", {'limit': 3})) }}
+</div>
 {% block body %}
 {% endblock %}
 
 </body>
 <footer>
     <h3>Romain TELLIER | UPJV Licence pro web développeur<br>
-    Designed by Me </h3>
+    Designed by Romain TELLIER | © {{ 'now'|date('Y-m-d') }} </h3>
 </footer>
+
+{% block javascripts %}
+    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+{% endblock %}
+
 </html>
