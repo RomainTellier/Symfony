@@ -11,14 +11,21 @@
 </head>
 <body>
 <div id="menu" class="col-md-12">
-    <h3>Les annonces</h3>
+    <h3>Le menu</h3>
     <ul class="nav nav-pills">
         <li class="active"><a href="{{ path('rt_platform_home') }}">Accueil</a></li>
-        <li><a href="{{ path('rt_platform_add') }}">Ajouter une annonce</a></li>
+        <li><a href="{{ path('rt_platform_add') }}">Ajouter un thème</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+        {% if is_granted('ROLE_USER') %}
+        <li><a href="{{ path('fos_user_security_logout') }}">Log out</a></li>
+        {% else %}
+        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+        {%  endif %}
+
     </ul>
 
-    <h4>Dernières annonces</h4>
-    {{ render(controller("RTPlatformBundle:Advert:menu", {'limit': 3})) }}
+    <h4>Les derniers thèmes ajoutés : </h4>
+    {{ render(controller("RTPlatformBundle:Advert:menu")) }}
 </div>
 {% block body %}
 {% endblock %}

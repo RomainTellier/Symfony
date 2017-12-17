@@ -1,6 +1,7 @@
 {% if is_granted('ROLE_USER') %}
 <ul class="nav nav-pills nav-stacked">
-    {% for theme in listTheme %}
+    {% for theme in listTheme|reverse(1,2) %}
+        {#ou slice pour en afficher que 3 par ex#}
         <li>
             <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
                 {{ theme.titre }}

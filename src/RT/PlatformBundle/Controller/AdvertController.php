@@ -428,7 +428,7 @@ class AdvertController extends Controller
             'form'   => $form->createView(),
         ));
     }
-    public function menuAction($limit)
+    public function menuAction()
     {
         /*// On fixe en dur une liste ici, bien entendu par la suite
         // on la récupérera depuis la BDD !
@@ -461,7 +461,7 @@ class AdvertController extends Controller
 
         // On passe l'objet
         return $this->render('RTPlatformBundle:Advert:menu.html.twig', array(
-            'listTheme' => $listTheme
+            'listTheme' => $listTheme,
         ));
 
     }
