@@ -25,6 +25,14 @@ rt_platform_edit:
     requirements:
         id: \d+
 
+rt_platform_edit_discussion:
+    path:      /editDiscussion/{id}
+    defaults:
+        _controller: RTPlatformBundle:Advert:editDiscussion
+    requirements:
+        id: \d+
+
+
 rt_platform_delete:
     path:      /delete/{id}
     defaults:

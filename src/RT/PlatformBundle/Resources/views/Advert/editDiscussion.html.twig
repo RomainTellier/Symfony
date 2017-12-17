@@ -1,3 +1,5 @@
+{% extends "RTPlatformBundle::layout.html.twig" %}
+
 {% block title %}
     Modifier une discussion
 {% endblock %}
@@ -6,7 +8,8 @@
 
     <h2>Modifier une discussion</h2>
 
-    {{ form(form) }}
+    {{ include("RTPlatformBundle:Advert:form_edit_discussion.html.twig") }}
+
 
     <p>
         Vous éditez une discussion déjà existante, merci de ne pas changer
@@ -14,10 +17,10 @@
     </p>
 
     <p>
-        <a href="{{ path('rt_platform_view', {'id': theme.id}) }}" class="btn btn-default">
+       {# <a href="{{ path('rt_platform_view', {'id': theme.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour au thème
-        </a>
+        </a>#}
     </p>
 
 {% endblock %}

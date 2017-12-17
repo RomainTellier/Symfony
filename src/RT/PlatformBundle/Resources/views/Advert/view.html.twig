@@ -38,7 +38,10 @@
                 <i class="glyphicon glyphicon-trash"></i>
                 Supprimer cette annonce
             </a>
-            {#{% include ('@RTPlatform/Advert/editDiscussion.html.twig') %}#}
+            <a href="{{ path('rt_platform_edit_discussion', {'id': discussion.id}) }}" class="btn btn-default">
+                <i class="glyphicon glyphicon-edit"></i>
+                Modifier la discussion
+            </a>
             <hr>
         {% endfor %}
         </div>

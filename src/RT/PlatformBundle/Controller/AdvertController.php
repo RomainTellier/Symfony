@@ -335,17 +335,17 @@ class AdvertController extends Controller
             ->add('save',      SubmitType::class)
         ;
         // À partir du formBuilder, on génère le formulaire
-        $form_edit = $formBuilder->getForm();
+        $form = $formBuilder->getForm();
 
         // Si la requête est en POST
         if ($request->isMethod('POST')) {
             // On fait le lien Requête <-> Formulaire
             // À partir de maintenant, la variable $theme contient les valeurs entrées dans le formulaire par le visiteur
-            $form_edit->handleRequest($request);
+            $form->handleRequest($request);
 
             // On vérifie que les valeurs entrées sont correctes
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
-            if ($form_edit->isValid()) {
+            if ($form->isValid()) {
                 // On enregistre notre objet $theme dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($discussion);
@@ -354,15 +354,16 @@ class AdvertController extends Controller
                 $request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistré !');
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
-                return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
+                return $this->redirectToRoute('rt_platform_view', array('id' => $discussion->getTheme()->getId()));
             }
         }
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
-        return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
-            'form_edit' => $form_edit->createView(),
+        return $this->render('RTPlatformBundle:Advert:editDiscussion.html.twig', array(
+            'form' => $form->createView(),
+            'theme' => $theme
         ));
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
