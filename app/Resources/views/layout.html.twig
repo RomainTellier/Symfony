@@ -7,11 +7,14 @@
     {% block stylesheets %}
         {# On charge le CSS de bootstrap depuis le site directement #}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
     {% endblock %}
 </head>
 <body>
-<div id="menu" class="col-md-12">
-    <h3>Le menu</h3>
+<div class="top-header">
+    <h2>Forum des poissons</h2>
+</div>
+<div id="menu">
     <ul class="nav nav-pills">
         <li class="active"><a href="{{ path('rt_platform_home') }}">Accueil</a></li>
         <li><a href="{{ path('rt_platform_add') }}">Ajouter un thème</a></li>
@@ -29,12 +32,11 @@
 </div>
 {% block body %}
 {% endblock %}
+<footer>
+    <h4>Designed by Romain TELLIER | UPJV Licence pro web développeur | © {{ 'now'|date('Y-m-d') }}</h4>
+</footer>
 
 </body>
-<footer>
-    <h3>Romain TELLIER | UPJV Licence pro web développeur<br>
-    Designed by Romain TELLIER | © {{ 'now'|date('Y-m-d') }} </h3>
-</footer>
 
 {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}

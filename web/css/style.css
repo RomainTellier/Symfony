@@ -1,0 +1,23 @@
+.top-header {
+    position: absolute;
+    background-color: #3b4b6b;
+    color: white;
+    text-align: center;
+    top:0;
+    right:0;
+    left:0;
+    margin-bottom: 80px;
+}
+#menu{
+    margin-top: 65px;
+    text-align: center;
+    width: 100%;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: #FFFFFF;;
+    background-color: #3a3a3a;
+}
