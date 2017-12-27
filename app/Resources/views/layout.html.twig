@@ -7,27 +7,44 @@
     {% block stylesheets %}
         {# On charge le CSS de bootstrap depuis le site directement #}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href=" {{ asset('css/style.css') }}">
     {% endblock %}
 </head>
 <body>
-<div id="menu" class="col-md-12">
-    <h3>Les annonces</h3>
+<div class="top-header">
+    <h2>Forum des poissons</h2>
+</div>
+<div id="menu">
     <ul class="nav nav-pills">
         <li class="active"><a href="{{ path('rt_platform_home') }}">Accueil</a></li>
-        <li><a href="{{ path('rt_platform_add') }}">Ajouter une annonce</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+        {% if is_granted('ROLE_ADMIN') %}
+            <li><a href="{{ path('rt_platform_add') }}">Ajouter un thème</a></li>
+            <li><a href="{{ path('rt_platform_listUsers') }}">Lister les participants</a></li>
+        {% endif %}
+        {% if is_granted('ROLE_USER') %}
+            <li><a href="#">Modifier le profil</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Log out</a></li>
+        {% else %}
+        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+        {%  endif %}
+
+
     </ul>
 
-    <h4>Dernières annonces</h4>
-    {{ render(controller("RTPlatformBundle:Advert:menu", {'limit': 3})) }}
+        {#<h4>Les derniers thèmes ajoutés : </h4>
+        {{ render(controller("RTPlatformBundle:Advert:menu")) }}#}
 </div>
 {% block body %}
 {% endblock %}
+<div style="margin-bottom: 50px;">
+
+</div>
+<footer>
+    <h4>Designed by Romain TELLIER | UPJV Licence pro web développeur | © {{ 'now'|date('Y-m-d') }}</h4>
+</footer>
 
 </body>
-<footer>
-    <h3>Romain TELLIER | UPJV Licence pro web développeur<br>
-    Designed by Romain TELLIER | © {{ 'now'|date('Y-m-d') }} </h3>
-</footer>
 
 {% block javascripts %}
     {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}

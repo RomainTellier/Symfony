@@ -1,0 +1,14 @@
+{% extends "RTPlatformBundle::layout.html.twig" %}
+
+{% block title %}
+  Liste des utilisateurs
+{% endblock %}
+
+{% block rtplatform_body %}
+
+<h1 style="text-align: center;">Liste des participants sur le forum :</h1>
+{% for user in users %}
+    <li class="well well-sm" style="text-align: center;">{{ user.username }}</li>
+{% endfor %}
+
+{% endblock %}
