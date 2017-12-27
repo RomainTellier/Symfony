@@ -21,6 +21,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class AdvertController extends Controller
 {
+    public function userAction() {
+        $user = $this->getUser();
+        return $this->render('RTPlatformBundle::layout.html.twig', array(
+            'user' => $user
+        ));
+
+    }
     public function indexAction($page)
     {
         // On ne sait pas combien de pages il y a
@@ -46,7 +53,7 @@ class AdvertController extends Controller
 
         // On récupère l'entité avec tout le contneu de la DB en array
         $listTheme = $repository->findAll();
-
+        $user = $this->getUser();
 
         // ou null si theme n'existe pas
         if (null === $listTheme) {
@@ -55,12 +62,15 @@ class AdvertController extends Controller
 
         // On passe l'objet
         return $this->render('RTPlatformBundle:Advert:index.html.twig', array(
-            'listTheme' => $listTheme
+            'listTheme' => $listTheme,
+            'user' => $user
         ));
     }
 
     public function viewAction($id, Request $request)
     {
+        $user = $this->getUser();
+
         // On récupère le repository
         $repository = $this->getDoctrine()
             ->getManager()
@@ -135,6 +145,7 @@ class AdvertController extends Controller
             'listDiscussions' => $listDiscussions,
             'discussion' => $discussion,
             'form' => $form->createView(),
+            'user' => $user
         ));
 
 
@@ -179,12 +190,14 @@ class AdvertController extends Controller
                 return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
             }
         }
+        $user = $this->getUser();
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('RTPlatformBundle:Advert:add.html.twig', array(
             'form' => $form->createView(),
+            'user' => $user,
         ));
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
@@ -240,12 +253,14 @@ class AdvertController extends Controller
                 return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
             }
         }
+        $user = $this->getUser();
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('RTPlatformBundle:Advert:addDiscussion.html.twig', array(
             'form' => $form->createView(),
+            'user' => $user,
         ));
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
@@ -296,6 +311,7 @@ class AdvertController extends Controller
                 return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
             }
         }
+        $user = $this->getUser();
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
@@ -303,6 +319,7 @@ class AdvertController extends Controller
         return $this->render('RTPlatformBundle:Advert:edit.html.twig', array(
             'form' => $form->createView(),
             'theme' => $theme,
+            'user' => $user,
         ));
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
@@ -357,13 +374,15 @@ class AdvertController extends Controller
                 return $this->redirectToRoute('rt_platform_view', array('id' => $discussion->getTheme()->getId()));
             }
         }
+        $user = $this->getUser();
 
         // À ce stade, le formulaire n'est pas valide car :
         // - Soit la requête est de type GET, donc le visiteur vient d'arriver sur la page et veut voir le formulaire
         // - Soit la requête est de type POST, mais le formulaire contient des valeurs invalides, donc on l'affiche de nouveau
         return $this->render('RTPlatformBundle:Advert:editDiscussion.html.twig', array(
             'form' => $form->createView(),
-            'theme' => $theme
+            'theme' => $theme,
+            'user' => $user,
         ));
         // On passe la méthode createView() du formulaire à la vue
         // afin qu'elle puisse afficher le formulaire toute seule
@@ -392,10 +411,12 @@ class AdvertController extends Controller
 
             return $this->redirectToRoute('rt_platform_home');
         }
+        $user = $this->getUser();
 
         return $this->render('RTPlatformBundle:Advert:delete.html.twig', array(
             'theme' => $theme,
             'form'   => $form->createView(),
+            'user' => $user,
         ));
     }
     public function deleteDiscussionAction(Request $request, $id_discussion)
@@ -422,10 +443,12 @@ class AdvertController extends Controller
             return $this->redirectToRoute('rt_platform_view', array('id' => $discussion->getTheme()->getId()));
            // return $this->redirectToRoute('rt_platform_home');
         }
+        $user = $this->getUser();
 
         return $this->render('RTPlatformBundle:Advert:deleteDiscussion.html.twig', array(
             'discussion' => $discussion,
             'form'   => $form->createView(),
+            'user' => $user,
         ));
     }
     public function menuAction()
@@ -458,10 +481,12 @@ class AdvertController extends Controller
         if (null === $listTheme) {
             throw new NotFoundHttpException("Il n'y a aucuns thèmes pour le moment, revenez plus tard !");
         }
+        $user = $this->getUser();
 
         // On passe l'objet
         return $this->render('RTPlatformBundle:Advert:menu.html.twig', array(
             'listTheme' => $listTheme,
+            'user' => $user,
         ));
 
     }
