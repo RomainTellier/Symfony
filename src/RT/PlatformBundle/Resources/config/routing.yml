@@ -12,6 +12,10 @@ rt_platform_view:
         _controller: RTPlatformBundle:Advert:view
     requirements:
         id: \d+
+rt_platform_listUsers:
+    path:      /listUsers
+    defaults:
+        _controller: RTPlatformBundle:Advert:listUsers
 
 rt_platform_add:
     path:      /add

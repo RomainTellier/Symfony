@@ -8,9 +8,9 @@
 
   <h2>Liste des thèmes</h2>
 
-  <ul>
+  <ul style="list-style: decimal;">
       {% for theme in listTheme %}
-        <li>
+        <li class="well">
           <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
               {{ theme.titre }}
           </a>

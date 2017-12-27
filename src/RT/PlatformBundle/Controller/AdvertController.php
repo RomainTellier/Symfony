@@ -28,6 +28,15 @@ class AdvertController extends Controller
         ));
 
     }
+    public function listUsersAction() {
+        $user = $this->getUser();
+        $userManager = $this->get('fos_user.user_manager');
+        $users = $userManager->findUsers();
+        return $this->render('RTPlatformBundle:Advert:listUsers.html.twig', array(
+            'users' =>   $users,
+            'user' => $user
+        ));
+    }
     public function indexAction($page)
     {
         // On ne sait pas combien de pages il y a
