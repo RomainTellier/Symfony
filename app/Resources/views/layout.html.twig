@@ -17,7 +17,6 @@
 <div id="menu">
     <ul class="nav nav-pills">
         <li class="active"><a href="{{ path('rt_platform_home') }}">Accueil</a></li>
-        <li><a href="{{ path('rt_platform_add') }}">Ajouter un thème</a></li>
         <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
         {% if is_granted('ROLE_USER') %}
             <li><a href="#">Modifier le profil</a></li>
@@ -26,7 +25,8 @@
         <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
         {%  endif %}
         {% if is_granted('ROLE_ADMIN') %}
-        <li><a href="{{ path('rt_platform_listUsers') }}">Lister les participants</a></li>
+            <li><a href="{{ path('rt_platform_add') }}">Ajouter un thème</a></li>
+            <li><a href="{{ path('rt_platform_listUsers') }}">Lister les participants</a></li>
         {% endif %}
 
 
