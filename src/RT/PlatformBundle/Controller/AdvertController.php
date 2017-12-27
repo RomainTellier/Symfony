@@ -101,9 +101,7 @@ class AdvertController extends Controller
 
         // On ajoute les champs de l'entité que l'on veut à notre formulaire
         $formBuilder
-            ->add('date',         DateType::class)
-            ->add('heure',        TimeType::class)
-            ->add('pseudo',       TextType::class)
+
             ->add('content',      TextType::class)
             ->add('save',         SubmitType::class)
         ;
@@ -121,6 +119,7 @@ class AdvertController extends Controller
             // (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
                 $discussion->setTheme($theme);
+                $discussion->setPseudo($user);
                 // On enregistre notre objet $discussion dans la base de données, par exemple
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($discussion);
@@ -205,7 +204,7 @@ class AdvertController extends Controller
 
     }
 
-    public function addDiscussionAction($id, Request $request)
+    /*public function addDiscussionAction($id, Request $request)
     {
         // On récupère le repository
         $repository = $this->getDoctrine()
@@ -266,7 +265,7 @@ class AdvertController extends Controller
         // afin qu'elle puisse afficher le formulaire toute seule
 
 
-    }
+    }*/
 
     public function editAction($id, Request $request)
     {
