@@ -1,8 +1,11 @@
-<h3>Formulaire d'ajout de discussion</h3>
+<div id="discussion-popup">
+<h3>Ajouter une discussion sur ce thème :</h3>
 
 <div class="well">
     Vous êtes connecté(e) en tant que : <b>{{ user }}</b> <br>
     Vous publierez donc cette discussion en tant que : <b>{{ user }}</b>
     <br> <br>
     {{ form(form) }}
+    <a href="#" onclick="document.getElementById('discussion-popup').style.display='none';return false;">FERMER</a>
+</div>
 </div>

@@ -3,6 +3,8 @@
 namespace RT\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * Discussion
@@ -58,6 +60,12 @@ class Discussion
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 5000,
+     *      minMessage = "Votre contenu doit être au minimum supérieur a {{ limit }} caractères",
+     *      maxMessage = "Votre contenu ne peut pas excéder plus de {{ limit }} caractères"
+     * )
      */
     private $content;
 
