@@ -10,5 +10,7 @@
     {# On définit un nouveau bloc, que les vues du bundle pourront remplir #}
     {% block rtplatform_body %}
     {% endblock %}
-    <span class="top-connected-user"> Utilisateur connecté : {{ user }}</span>
+        {% if is_granted('ROLE_USER') %}
+            <span class="top-connected-user"> Utilisateur connecté : {{ user }}</span>
+        {%  endif %}
 {% endblock %}
