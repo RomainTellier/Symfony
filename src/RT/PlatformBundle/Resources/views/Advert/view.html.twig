@@ -18,6 +18,8 @@
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
         </a>
+    {% if is_granted('ROLE_USER') %}
+
         <a href="{{ path('rt_platform_edit', {'id': theme.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-edit"></i>
             Modifier le thème
@@ -26,6 +28,7 @@
             <i class="glyphicon glyphicon-trash"></i>
             Supprimer le thème
         </a>
+    {% endif %}
     </p>
     <div>
         {% for discussion in listDiscussions %}
@@ -34,7 +37,9 @@
             <h4>{{ discussion.pseudo }}</h4>
             <h4>{{ discussion.content }}</h4>
             <br>
-            <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
+            {% if is_granted('ROLE_USER') %}
+
+                <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
                 <i class="glyphicon glyphicon-trash"></i>
                 Supprimer cette annonce
             </a>
@@ -42,6 +47,7 @@
                 <i class="glyphicon glyphicon-edit"></i>
                 Modifier la discussion
             </a>
+                {% endif %}
             <hr>
         {% endfor %}
         </div>
