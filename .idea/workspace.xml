@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a00dfaee-8266-4a28-8513-b205286c7672" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/services.yml" afterPath="$PROJECT_DIR$/app/config/services.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,33 +54,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdvertController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Controller/AdvertController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="76" column="5" lean-forward="false" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
-              <folding>
-                <element signature="e#49#89#0#PHP" expanded="true" />
-                <element signature="e#1005#1041#0#PHP" expanded="true" />
-                <element signature="e#1304#1349#0#PHP" expanded="true" />
-                <element signature="e#2379#2403#1#PHP" expanded="true" />
-                <element signature="e#2818#2859#0#PHP" expanded="true" />
-                <element signature="e#3184#3208#1#PHP" expanded="true" />
-                <element signature="e#3718#3747#1#PHP" expanded="true" />
-                <element signature="e#3820#3849#1#PHP" expanded="true" />
-                <element signature="e#11642#11666#1#PHP" expanded="true" />
-                <element signature="e#14174#14198#1#PHP" expanded="true" />
-                <element signature="e#14467#14496#1#PHP" expanded="true" />
-                <element signature="e#16909#16933#1#PHP" expanded="true" />
-                <element signature="e#18088#18117#1#PHP" expanded="true" />
-                <element signature="e#19997#20021#1#PHP" expanded="true" />
-                <marker date="1514650084249" expanded="false" signature="10701:10717" ph="/advert/{id}" />
-                <marker date="1514650084249" expanded="false" signature="19634:19672" ph="RTPlatform:Advert:menu" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/services.yml">
           <provider selected="true" editor-type-id="text-editor">
@@ -93,7 +64,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/config.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
@@ -113,11 +84,25 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="layout.html.twig" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+              <folding>
+                <element signature="e#781#796#0#Twig" expanded="true" />
+                <element signature="e#863#884#0#Twig" expanded="true" />
+                <element signature="e#1019#1040#0#Twig" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="7" column="54" lean-forward="false" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
+            <state relative-caret-position="187">
+              <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
               <folding>
                 <element signature="e#77#119#0#PHP" expanded="true" />
               </folding>
@@ -233,13 +218,13 @@
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/listUsers.html.twig" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Resources/views/Advert/view.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
         <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Form/Type/RegistrationType.php" />
-        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Form/Type/RegistrationFormType.php" />
         <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Form/RegistrationType.php" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
+        <option value="$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
       </list>
     </option>
   </component>
@@ -1181,7 +1166,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133557000" />
+    <option name="totallyTimeSpent" value="135183000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1508,17 +1493,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="23" column="19" lean-forward="false" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-          <folding>
-            <element signature="e#781#796#0#Twig" expanded="true" />
-            <element signature="e#863#884#0#Twig" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Repository/DiscussionRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1605,16 +1579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="7" column="54" lean-forward="false" selection-start-line="7" selection-start-column="54" selection-end-line="7" selection-end-column="54" />
-          <folding>
-            <element signature="e#77#119#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Resources/views/Registration/register_content.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1672,6 +1636,28 @@
         <state relative-caret-position="136">
           <caret line="8" column="14" lean-forward="false" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RT/PlatformBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="21" column="7" lean-forward="false" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+          <folding>
+            <element signature="e#77#119#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/layout.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="27" column="18" lean-forward="true" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding>
+            <element signature="e#781#796#0#Twig" expanded="true" />
+            <element signature="e#863#884#0#Twig" expanded="true" />
+            <element signature="e#1019#1040#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
