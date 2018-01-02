@@ -22,16 +22,28 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="string", nullable=true, length=255)
      *
-     * @Assert\NotBlank(message="Please enter your name.", groups={"Registration", "Profile"})
      * @Assert\Length(
-     *     min=3,
+     *     min=2,
      *     max=255,
-     *     minMessage="The name is too short.",
-     *     maxMessage="The name is too long.",
+     *     minMessage="Le nom est trop court.",
+     *     maxMessage="Le nom est trop long.",
      *     groups={"Registration", "Profile"}
      * )
      */
-    protected $name;
+    protected $nom;
+
+    /**
+     * @ORM\Column(type="string", nullable=true, length=255)
+     *
+     * @Assert\Length(
+     *     min=2,
+     *     max=255,
+     *     minMessage="Le prenom est trop court.",
+     *     maxMessage="Le prenom est trop long.",
+     *     groups={"Registration", "Profile"}
+     * )
+     */
+    protected $prenom;
 
 
     /**
@@ -40,6 +52,13 @@ class User extends BaseUser
      * @ORM\Column(type="integer", nullable=true)
      */
     protected $age;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $tel;
 
     /**
      * @return int
@@ -56,6 +75,24 @@ class User extends BaseUser
     {
         $this->age = $age;
     }
+
+    /**
+     * @return int
+     */
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * @param int $tel
+     */
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+    }
+
+
 
     /**
      * @return mixed
@@ -82,26 +119,50 @@ class User extends BaseUser
     }
 
     /**
-     * Set name
+     * Set nom
      *
-     * @param string $name
+     * @param string $nom
      *
      * @return User
      */
-    public function setName($name)
+    public function setNom($nom)
     {
-        $this->name = $name;
+        $this->nom = $nom;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get nom
      *
      * @return string
      */
-    public function getName()
+    public function getNom()
     {
-        return $this->name;
+        return $this->nom;
+    }
+
+    /**
+     * Set prenom
+     *
+     * @param string $prenom
+     *
+     * @return User
+     */
+    public function setPrenom($prenom)
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    /**
+     * Get prenom
+     *
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
     }
 }

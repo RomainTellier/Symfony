@@ -10,6 +10,9 @@ namespace RT\PlatformBundle\Form;
 
     use FOS\UserBundle\Util\LegacyFormHelper;
     use Symfony\Component\Form\AbstractType;
+    use Symfony\Component\Validator\Constraints\Length;
+    use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+    use Symfony\Component\Form\Extension\Core\Type\TextType;
     use Symfony\Component\Form\FormBuilderInterface;
     use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,7 +21,12 @@ class RegistrationType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('name');
+        $builder->add('nom')
+        ->add('prenom')
+        ->add('age', IntegerType::class)
+        ->add('tel', TextType::class, array(
+            'constraints' => new Length(array('min' => 10, 'max' => 10)),
+        ));
     }
 
     public function getParent()
@@ -32,7 +40,19 @@ class RegistrationType extends AbstractType
     }
 
     // For Symfony 2.x
-    public function getName()
+    public function getNom()
+    {
+        return $this->getBlockPrefix();
+    }
+    public function getPrenom()
+    {
+        return $this->getBlockPrefix();
+    }
+    public function getAge()
+    {
+        return $this->getBlockPrefix();
+    }
+    public function getTel()
     {
         return $this->getBlockPrefix();
     }
