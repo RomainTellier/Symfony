@@ -25,12 +25,15 @@ class RegistrationType extends AbstractType
     {
         $builder->add('nom')
         ->add('prenom')
-        ->add('age', IntegerType::class)
+        ->add('age', IntegerType::class, array(
+            'required' =>false,
+        ))
         ->add('tel', TextType::class, array(
+            'required' =>false,
             'constraints' => new Length(array('min' => 10, 'max' => 10))))
         ->add('ville', ChoiceType::class, array(
             'required' =>false,
-            'placeholder' => 'Choix de votre ville',
+            'placeholder' => 'Choix de votre ville (Non obligatoire)',
             'empty_data' => 'Non renseigné',
             'choices' => array(
                 'Saint-Quentin' => 'Saint-Quentin',
@@ -39,6 +42,8 @@ class RegistrationType extends AbstractType
             ),
             'preferred_choices' => array('Non renseigné'),
         ))
+            ->add('captchaCode', 'Captcha\Bundle\CaptchaBundle\Form\Type\CaptchaType', array(
+                'captchaConfig' => 'ExampleCaptcha'))
         ;
     }
 
@@ -70,6 +75,10 @@ class RegistrationType extends AbstractType
         return $this->getBlockPrefix();
     }
     public function getVille()
+    {
+        return $this->getBlockPrefix();
+    }
+    public function getCaptchaCode()
     {
         return $this->getBlockPrefix();
     }

@@ -6,6 +6,8 @@ namespace RT\PlatformBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
@@ -66,6 +68,23 @@ class User extends BaseUser
      * @ORM\Column(type="string", nullable=true)
      */
     protected $tel;
+
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     *      message = "CAPTCHA INVALIDE, veuillez réessayer."
+     * )
+     */
+    protected $captchaCode;
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
 
     /**
      * @return int
