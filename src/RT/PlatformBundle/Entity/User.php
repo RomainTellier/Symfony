@@ -54,6 +54,13 @@ class User extends BaseUser
     protected $age;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $ville;
+
+    /**
      * @var int
      *
      * @ORM\Column(type="string", nullable=true)
@@ -90,6 +97,22 @@ class User extends BaseUser
     public function setTel($tel)
     {
         $this->tel = $tel;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * @param string $ville
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
     }
 
 
