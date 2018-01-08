@@ -1,6 +1,7 @@
 <?php
 
 namespace RT\PlatformBundle\Repository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * ThemeRepository
@@ -10,4 +11,20 @@ namespace RT\PlatformBundle\Repository;
  */
 class ThemeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Find all products
+     *
+     * @param int $page
+     * @param int $max
+     * @return Paginator
+     */
+    public function findAll($page = 0, $max = 5)
+    {
+        $qb = $this->createQueryBuilder('p');
+        $qb->setFirstResult(($page) * $max)
+            ->setMaxResults($max);
+
+
+        return new Paginator($qb);
+    }
 }

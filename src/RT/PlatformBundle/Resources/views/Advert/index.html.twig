@@ -8,18 +8,41 @@
 
   <h2>Liste des thèmes</h2>
 
-  <ul style="list-style: decimal;">
-      {% for theme in listTheme %}
+  <ul style="list-style: circle;">
+      {% for theme in themesList %}
         <li class="well">
           <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
-              {{ theme.titre }}
+             {{ theme.id }} | {{ theme.titre }}
           </a>
          {# par {{ advert.author }},
           le {{ advert.date|date('d/m/Y') }}#}
         </li>
       {% else %}
-        <li>Pas (encore !) d'annonces</li>
+        <li>Pas (encore !) de thèmes !</li>
       {% endfor %}
   </ul>
+
+
+    <div class="text-center">
+        <ul class="pagination">
+            {% if pagination.page>0 %}
+                <li><a href="{{ path(pagination.route,
+                    pagination.route_params|merge({'page': 0})) }}"><<</a></li>
+                <li><a href="{{ path(pagination.route,
+                    pagination.route_params|merge({'page': pagination.page-1})) }}"><</a></li>
+            {% endif %}
+            {% for p in range(max(pagination.page-8, 0),
+            min(pagination.page+4, pagination.pages_count)) %}
+                <li {% if p == pagination.page %} class="active"{% endif %}><a href="{{ path(pagination.route,
+                    pagination.route_params|merge({'page': p})) }}">{{ p }}</a></li>
+            {% endfor %}
+            {% if pagination.page<pagination.pages_count %}
+                <li><a href="{{ path(pagination.route,
+                    pagination.route_params|merge({'page': pagination.page+1})) }}">></a></li>
+                <li><a href="{{ path(pagination.route,
+                    pagination.route_params|merge({'page': pagination.pages_count})) }}">>></a></li>
+            {% endif %}
+        </ul>
+    </div>
 
 {% endblock %}
