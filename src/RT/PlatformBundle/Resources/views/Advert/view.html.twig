@@ -6,7 +6,7 @@
 
 {% block rtplatform_body %}
 
-    <h2>{{ theme.titre }}</h2>
+    <h2>Thème : {{ theme.titre }}</h2>
     {#<i>Par {{ advert.author }}, le {{ advert.date|date('d/m/Y') }}</i>
 
     <div class="well">
@@ -31,6 +31,12 @@
     {% endif %}
     </p>
     <div>
+        <div class="count" style="text-align: center;">
+            Nombre de discussions pour ce thème : {{ listDiscussions.getTotalItemCount }}
+        </div>
+        <br>
+        <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
+        <br>
         {% for discussion in listDiscussions %}
             <h4>{{ discussion.heure |date('H:i:s')}}</h4>
             <h4>{{ discussion.date |date('Y-m-d')}}</h4>
@@ -51,5 +57,8 @@
             <hr>
         {% endfor %}
         </div>
+
 {% include ('@RTPlatform/Advert/form_discussion.html.twig') %}
+    <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
+
 {% endblock %}

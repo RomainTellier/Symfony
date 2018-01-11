@@ -65,7 +65,6 @@ class AdvertController extends Controller
         // On récupère l'entité avec tout le contneu de la DB en array
         $listTheme = $repository->findAll();
         $user = $this->getUser();
-
         // ou null si theme n'existe pas
         if (null === $listTheme) {
             throw new NotFoundHttpException("Il n'y a aucuns thèmes pour le moment, revenez plus tard !");
@@ -96,7 +95,7 @@ class AdvertController extends Controller
         ));
     }
 
-    public function viewAction($id, Request $request)
+    public function viewAction($id, $page=1,Request $request)
     {
         $user = $this->getUser();
 
@@ -116,11 +115,19 @@ class AdvertController extends Controller
 
         //Autre facon ici pour les discussion
         $em = $this->getDoctrine()->getManager();
-        $discussion = $em->getRepository('RTPlatformBundle:Discussion')->find($id);
         $listDiscussions = $em
             ->getRepository('RTPlatformBundle:Discussion')
-            ->findBy(array('theme' => $theme))
+            ->findBy(array('theme'=>$theme))
         ;
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+          $listDiscussions,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 5)
+        );
 
         $discussion = new Discussion();
 
@@ -170,10 +177,11 @@ class AdvertController extends Controller
         // on pase les objets
         return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
             'theme' => $theme,
-            'listDiscussions' => $listDiscussions,
+            'listDiscussions' => $result,
             'discussion' => $discussion,
             'form' => $form->createView(),
-            'user' => $user
+            'user' => $user,
+
         ));
 
 
