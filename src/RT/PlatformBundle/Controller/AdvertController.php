@@ -18,6 +18,8 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Doctrine\ORM\Tools\Pagination\Paginator;
+
 
 class AdvertController extends Controller
 {
@@ -37,7 +39,7 @@ class AdvertController extends Controller
             'user' => $user
         ));
     }
-    public function indexAction($page)
+    public function indexAction($page= 0)
     {
         // On ne sait pas combien de pages il y a
         // Mais on sait qu'une page doit être supérieure ou égale à 1
@@ -63,20 +65,37 @@ class AdvertController extends Controller
         // On récupère l'entité avec tout le contneu de la DB en array
         $listTheme = $repository->findAll();
         $user = $this->getUser();
-
         // ou null si theme n'existe pas
         if (null === $listTheme) {
             throw new NotFoundHttpException("Il n'y a aucuns thèmes pour le moment, revenez plus tard !");
         }
 
+            //Récupération des produits avec le numéro de page (1 si non renseigné)
+            //et le maximum de produits à afficher (30 ici)
+            $themesList = $this->getDoctrine()->getRepository('RTPlatformBundle:Theme')
+                ->findAll($page, 5);
+
+            //Informations pour la pagination: la page actuelle, le nom de la route,
+            //le nombre de pages retournées (un count de $productList donne le nombre total de produits)
+            $pagination = array(
+                'page' => $page,
+                'route' => 'rt_platform_home',
+                'pages_count' => ceil(count($themesList) / 5),
+                'route_params' => array()
+            );
+
+            //On retourne le tout
+
         // On passe l'objet
         return $this->render('RTPlatformBundle:Advert:index.html.twig', array(
             'listTheme' => $listTheme,
-            'user' => $user
+            'user' => $user,
+            'themesList' => $themesList,
+            'pagination' => $pagination
         ));
     }
 
-    public function viewAction($id, Request $request)
+    public function viewAction($id, $page=1,Request $request)
     {
         $user = $this->getUser();
 
@@ -96,11 +115,19 @@ class AdvertController extends Controller
 
         //Autre facon ici pour les discussion
         $em = $this->getDoctrine()->getManager();
-        $discussion = $em->getRepository('RTPlatformBundle:Discussion')->find($id);
         $listDiscussions = $em
             ->getRepository('RTPlatformBundle:Discussion')
-            ->findBy(array('theme' => $theme))
+            ->findBy(array('theme'=>$theme))
         ;
+        /**
+         * @var $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+          $listDiscussions,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 5)
+        );
 
         $discussion = new Discussion();
 
@@ -150,10 +177,11 @@ class AdvertController extends Controller
         // on pase les objets
         return $this->render('RTPlatformBundle:Advert:view.html.twig', array(
             'theme' => $theme,
-            'listDiscussions' => $listDiscussions,
+            'listDiscussions' => $result,
             'discussion' => $discussion,
             'form' => $form->createView(),
-            'user' => $user
+            'user' => $user,
+
         ));
 
 

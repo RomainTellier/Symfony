@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new RT\PlatformBundle\RTPlatformBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Captcha\Bundle\CaptchaBundle\CaptchaBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

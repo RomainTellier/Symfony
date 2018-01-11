@@ -2,7 +2,7 @@ rt_platform_home:
     path:      /{page}
     defaults:
         _controller: RTPlatformBundle:Advert:index
-        page:        1
+        page:        0
     requirements:
         page: \d*
     
