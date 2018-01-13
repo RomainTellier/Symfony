@@ -15,7 +15,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Discussion
 {
     /**
-     * @ORM\ManyToOne(targetEntity="RT\PlatformBundle\Entity\Theme")
+     * @ORM\ManyToOne(targetEntity="RT\PlatformBundle\Entity\Theme", inversedBy="discussions")
      * @ORM\JoinColumn(nullable=false)
      */
     private $theme;

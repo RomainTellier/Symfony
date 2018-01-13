@@ -7,21 +7,38 @@
 {% block rtplatform_body %}
 
   <h2>Liste des thèmes</h2>
+<table class="table table-striped table-responsive">
+    <thead>
+    <tr>
+        <th>N°</th>
+        <th>Thème</th>
+        <th>Nombre discussion</th>
+        <th>Date dernière discussion</th>
+        <th>Heure dernière discussion</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for theme in themesList %}
+        <tr>
+        <td>
+            <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
+                {{ theme.id }} </a>
+        </td>
+            <td> <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">{{ theme.titre }}</a> </td>
 
-  <ul style="list-style: circle;">
-      {% for theme in themesList %}
-        <li class="well well-sm">
-          <a href="{{ path('rt_platform_view', {'id': theme.id}) }}">
-             {{ theme.id }} | {{ theme.titre }}
-          </a>
-         {# par {{ advert.author }},
-          le {{ advert.date|date('d/m/Y') }}#}
-        </li>
-      {% else %}
-        <li>Pas encore de thèmes !</li>
-      {% endfor %}
-  </ul>
+            <td>  <span> {{ theme.discussions|length }} </span> </td>
 
+                {% if theme.discussions|length > 0 %}
+                    <td>  <span> {{ theme.discussions.last.date|date('d-m-Y') }}</span> </td>
+                    <td> <span>  {{ theme.discussions.last.heure|date('H:i:s') }}</span> </td>
+
+                {% endif %}
+    {% else %}
+        <td>Pas encore de thèmes !</td>
+    {% endfor %}
+        </tr>
+    </tbody>
+</table>
 
     <div class="text-center">
         <ul class="pagination">
