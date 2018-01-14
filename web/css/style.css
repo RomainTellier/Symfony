@@ -46,3 +46,44 @@ footer {
      float: none;
      vertical-align: top;
  }
+
+.poisson-accueil {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+.container, .container * {
+    position: absolute;
+    width: 160px;
+    height: 150px;
+}
+
+.flip {
+    transition: transform .5s;
+}
+
+.flipped {
+    transform: scaleX(-1);
+}
+
+.bob {
+    animation: bob 7s infinite;
+}
+
+.look {
+    transition: transform .5s;
+}
+
+.look-up {
+    transform: translateY(-7px);
+}
+
+.look-down {
+    transform: translateY(4px);
+}
+
+@keyframes bob {
+    0% { transform: translateY(-6px); }
+    50% { transform: translateY(6px); }
+    100% { transform: translateY(-6px); }
+}
