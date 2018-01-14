@@ -19,9 +19,15 @@
     text-align: center;
     width: 100%;
 }
+.nav-pills>li>a:hover{
+    color: black;
+}
 tbody td {
     vertical-align: baseline !important;
     padding: 16px !important;
+}
+.main-content{
+    margin: 10px 20px 10px 20px;
 }
 footer {
     position: fixed;
