@@ -37,29 +37,34 @@
         <br>
         <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
         <br>
+        {% if is_granted('ROLE_USER') %}
+
         <a href="#ajout-discussion" class="btn btn-success">
             <i class="glyphicon glyphicon-edit"></i>
             Ajouter une discussion
         </a>
+        {%  endif %}
         <br>
         <br>
         {% for discussion in listDiscussions %}
-            <h4>{{ discussion.heure |date('H:i:s')}}</h4>
-            <h4>{{ discussion.date |date('Y-m-d')}}</h4>
-            <h4>{{ discussion.pseudo }}</h4>
-            <h4>{{ discussion.content }}</h4>
-            <br>
-            {% if is_granted('ROLE_ADMIN') %}
+            <div class="well background-well">
+                <span>A : <b>{{ discussion.heure |date('H:i:s')}}</b></span>
+                <span style="padding-left: 20px;"> Le : <b>{{ discussion.date |date('Y-m-d')}}</b></span>
+                <span style="padding-left: 20px;">Pseudo : <b>{{ discussion.pseudo }}</b></span>
+                <h4>{{ discussion.content }}</h4>
+                <br>
+                {% if is_granted('ROLE_ADMIN') %}
 
-                <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
-                <i class="glyphicon glyphicon-trash"></i>
-                Supprimer cette discussion
-            </a>
-            <a href="{{ path('rt_platform_edit_discussion', {'id': discussion.id}) }}" class="btn btn-default">
-                <i class="glyphicon glyphicon-edit"></i>
-                Modifier la discussion
-            </a>
-                {% endif %}
+                    <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    Supprimer cette discussion
+                </a>
+                <a href="{{ path('rt_platform_edit_discussion', {'id': discussion.id}) }}" class="btn btn-default">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Modifier la discussion
+                </a>
+                    {% endif %}
+            </div>
             <hr>
         {% endfor %}
         </div>

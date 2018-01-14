@@ -27,7 +27,10 @@ tbody td {
     padding: 16px !important;
 }
 .main-content{
-    margin: 10px 20px 10px 20px;
+    margin: 10px 40px 10px 40px;
+}
+.background-well {
+    background-color: #bac7d6 !important;
 }
 footer {
     position: fixed;
