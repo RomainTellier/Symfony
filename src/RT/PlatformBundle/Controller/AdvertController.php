@@ -126,7 +126,7 @@ class AdvertController extends Controller
         $result = $paginator->paginate(
           $listDiscussions,
             $request->query->getInt('page', 1),
-            $request->query->getInt('limit', 5)
+            $request->query->getInt('limit', 10)
         );
 
         $discussion = new Discussion();
@@ -139,7 +139,7 @@ class AdvertController extends Controller
         $formBuilder
 
             ->add('content',      TextType::class)
-            ->add('save',         SubmitType::class)
+            ->add('Enregistrer',         SubmitType::class)
         ;
 
         // À partir du formBuilder, on génère le formulaire
@@ -199,7 +199,7 @@ class AdvertController extends Controller
         $formBuilder
 
             ->add('titre',     TextType::class)
-            ->add('save',      SubmitType::class)
+            ->add('Enregistrer',      SubmitType::class)
         ;
         // Pour l'instant, pas de candidatures, catégories, etc., on les gérera plus tard
 

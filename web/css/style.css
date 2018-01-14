@@ -19,6 +19,16 @@
     text-align: center;
     width: 100%;
 }
+.nav-pills>li>a:hover{
+    color: black;
+}
+tbody td {
+    vertical-align: baseline !important;
+    padding: 16px !important;
+}
+.main-content{
+    margin: 10px 20px 10px 20px;
+}
 footer {
     position: fixed;
     bottom: 0;
@@ -26,6 +36,7 @@ footer {
     text-align: center;
     color: #FFFFFF;;
     background-color: #3a3a3a;
+    z-index: 10;
 }
 .nav{
      display: inline-block;

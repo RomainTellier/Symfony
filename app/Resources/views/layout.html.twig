@@ -12,21 +12,21 @@
 </head>
 <body>
 <div class="top-header">
-    <h2>Forum des poissons</h2>
+    <h2>Forum des siphonnés du bocal !</h2>
 </div>
 <div id="menu">
     <ul class="nav nav-pills">
-        <li class="active"><a href="{{ path('rt_platform_home') }}">Accueil</a></li>
-        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+        <li><a href="{{ path('rt_platform_home') }}" class="btn btn-primary">Accueil</a></li>
+        <li><a href="{{ path('fos_user_registration_register') }}" class="btn btn-primary">Inscription</a></li>
         {% if is_granted('ROLE_ADMIN') %}
-            <li><a href="{{ path('rt_platform_add') }}">Ajouter un thème</a></li>
-            <li><a href="{{ path('rt_platform_listUsers') }}">Lister les participants</a></li>
+            <li><a href="{{ path('rt_platform_add') }}" class="btn btn-primary">Ajouter un thème</a></li>
+            <li><a href="{{ path('rt_platform_listUsers') }}" class="btn btn-primary">Lister les participants</a></li>
         {% endif %}
         {% if is_granted('ROLE_USER') %}
-            <li><a href="{{ path('fos_user_profile_edit') }}">Modifier le profil</a></li>
-            <li><a href="{{ path('fos_user_security_logout') }}">Log out</a></li>
+            <li><a href="{{ path('fos_user_profile_edit') }}" class="btn btn-primary">Modifier le profil</a></li>
+            <li><a href="{{ path('fos_user_security_logout') }}" class="btn btn-primary">Déconnexion</a></li>
         {% else %}
-        <li><a href="{{ path('fos_user_security_login') }}">Login</a></li>
+        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
         {%  endif %}
 
 
@@ -35,8 +35,10 @@
         {#<h4>Les derniers thèmes ajoutés : </h4>
         {{ render(controller("RTPlatformBundle:Advert:menu")) }}#}
 </div>
+<div class="main-content">
 {% block body %}
 {% endblock %}
+</div>
 <div style="margin-bottom: 50px;">
 
 </div>

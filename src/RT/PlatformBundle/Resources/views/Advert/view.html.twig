@@ -18,7 +18,7 @@
             <i class="glyphicon glyphicon-chevron-left"></i>
             Retour à la liste
         </a>
-    {% if is_granted('ROLE_USER') %}
+    {% if is_granted('ROLE_ADMIN') %}
 
         <a href="{{ path('rt_platform_edit', {'id': theme.id}) }}" class="btn btn-default">
             <i class="glyphicon glyphicon-edit"></i>
@@ -37,17 +37,23 @@
         <br>
         <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
         <br>
+        <a href="#ajout-discussion" class="btn btn-success">
+            <i class="glyphicon glyphicon-edit"></i>
+            Ajouter une discussion
+        </a>
+        <br>
+        <br>
         {% for discussion in listDiscussions %}
             <h4>{{ discussion.heure |date('H:i:s')}}</h4>
             <h4>{{ discussion.date |date('Y-m-d')}}</h4>
             <h4>{{ discussion.pseudo }}</h4>
             <h4>{{ discussion.content }}</h4>
             <br>
-            {% if is_granted('ROLE_USER') %}
+            {% if is_granted('ROLE_ADMIN') %}
 
                 <a href="{{ path('rt_platform_deleteDiscussion', {'id_discussion': discussion.id}) }}" class="btn btn-danger">
                 <i class="glyphicon glyphicon-trash"></i>
-                Supprimer cette annonce
+                Supprimer cette discussion
             </a>
             <a href="{{ path('rt_platform_edit_discussion', {'id': discussion.id}) }}" class="btn btn-default">
                 <i class="glyphicon glyphicon-edit"></i>
@@ -57,8 +63,11 @@
             <hr>
         {% endfor %}
         </div>
-
-{% include ('@RTPlatform/Advert/form_discussion.html.twig') %}
+    <div id="ajout-discussion">
+        {% if is_granted('ROLE_USER') %}
+            {% include ('@RTPlatform/Advert/form_discussion.html.twig') %}
+        {% endif %}
+    </div>
     <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
 
 {% endblock %}

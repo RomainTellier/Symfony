@@ -3,6 +3,7 @@
 namespace RT\PlatformBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Theme
@@ -28,6 +29,15 @@ class Theme
      */
     private $titre;
 
+    /**
+     * @ORM\OneToMany(targetEntity="RT\PlatformBundle\Entity\Discussion", mappedBy="theme")
+     */
+    private $discussions;
+
+    public function getDiscussions()
+     {
+         return $this->discussions;
+     }
 
     /**
      * Get id
@@ -62,5 +72,10 @@ class Theme
     {
         return $this->titre;
     }
+
+    public function __construct()
+     {
+         $this->discussions = new ArrayCollection();
+     }
 }
 
