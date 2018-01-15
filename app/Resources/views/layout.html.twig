@@ -87,5 +87,11 @@
         });
     });
 
+    $( "#clickme" ).click(function() {
+        $( "#ajout-discussion" ).toggle( "slow" );
+    });
+    $(".button").on("click", function() {
+        $(this).html($(this).html() == 'OUVRIR' ? 'FERMER' : 'OUVRIR');
+    });jQuery
 </script>
 </html>

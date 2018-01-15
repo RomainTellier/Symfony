@@ -35,7 +35,7 @@
             Nombre de discussions pour ce thème : {{ listDiscussions.getTotalItemCount }}
         </div>
         <br>
-        <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
+        <div class="text-center">{{ knp_pagination_render(listDiscussions) }}</div>
         <br>
         {% if is_granted('ROLE_USER') %}
 
@@ -68,11 +68,16 @@
             <hr>
         {% endfor %}
         </div>
+
     <div id="ajout-discussion">
         {% if is_granted('ROLE_USER') %}
             {% include ('@RTPlatform/Advert/form_discussion.html.twig') %}
         {% endif %}
     </div>
-    <div class="text-center nav">{{ knp_pagination_render(listDiscussions) }}</div>
+    <button id="clickme"  class="button btn btn-warning">
+        FERMER
+    </button>
+    <div class="text-center">{{ knp_pagination_render(listDiscussions) }}</div>
 
 {% endblock %}
+
