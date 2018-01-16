@@ -39,7 +39,7 @@
         <br>
         {% if is_granted('ROLE_USER') %}
 
-        <a href="#ajout-discussion" class="btn btn-success">
+        <a href="#clickme" class="btn btn-success">
             <i class="glyphicon glyphicon-edit"></i>
             Ajouter une discussion
         </a>
@@ -74,9 +74,13 @@
             {% include ('@RTPlatform/Advert/form_discussion.html.twig') %}
         {% endif %}
     </div>
-    <button id="clickme"  class="button btn btn-warning">
+{% if is_granted('ROLE_USER') %}
+
+<button id="clickme"  class="button btn btn-warning">
         FERMER
     </button>
+{% endif %}
+
     <div class="text-center">{{ knp_pagination_render(listDiscussions) }}</div>
 
 {% endblock %}

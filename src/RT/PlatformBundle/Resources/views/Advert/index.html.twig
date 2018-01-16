@@ -50,7 +50,7 @@
             {% for p in range(max(pagination.page-3, 1),
             min(pagination.page+3, pagination.pages_count)) %}
                 <li {% if p == pagination.page %} class="active"{% endif %}><a href="{{ path(pagination.route,
-                    pagination.route_params|merge({'page': p-1})) }}">{{ p }}</a></li>
+                    pagination.route_params|merge({'page': p-1  })) }}">{{ p }}</a></li>
             {% endfor %}
             {% if pagination.page<pagination.pages_count %}
                 <li><a href="{{ path(pagination.route,
