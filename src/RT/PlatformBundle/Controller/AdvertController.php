@@ -41,28 +41,22 @@ class AdvertController extends Controller
     }
     public function indexAction($page= 0)
     {
-        // On ne sait pas combien de pages il y a
-        // Mais on sait qu'une page doit être supérieure ou égale à 1
+        // On sait qu'une page doit être supérieure ou égale à 0
         if ($page < 0) {
             // On déclenche une exception NotFoundHttpException, cela va afficher
             // une page d'erreur 404 (qu'on pourra personnaliser plus tard d'ailleurs)
             throw new NotFoundHttpException('Page "'.$page.'" inexistante.');
         }
 
-        // Ici, on récupérera la liste des annonces, puis on la passera au template
+        // Ici, on récupérera la liste des theme, puis on la passera au template
 
-        // Mais pour l'instant, on ne fait qu'appeler le template
-       //  return $this->render('RTPlatformBundle:Advert:index.html.twig');
-        /*return $this->render('RTPlatformBundle:Advert:index.html.twig', array(
-            'listAdverts' => array()
-        ));*/
         // On récupère le repository
         $repository = $this->getDoctrine()
             ->getManager()
             ->getRepository('RTPlatformBundle:Theme')
         ;
 
-        // On récupère l'entité avec tout le contneu de la DB en array
+        // On récupère l'entité avec tout le contenu de la DB en array
         $listTheme = $repository->findAll();
         $user = $this->getUser();
         // ou null si theme n'existe pas
@@ -76,16 +70,15 @@ class AdvertController extends Controller
                 ->findAll($page, 5);
 
             //Informations pour la pagination: la page actuelle, le nom de la route,
-            //le nombre de pages retournées (un count de $productList donne le nombre total de produits)
+            //le nombre de pages retournées (un count de $themeList donne le nombre total de theme)
             $pagination = array(
-                'page' => $page,
+                'page' => $page+1,
                 'route' => 'rt_platform_home',
                 'pages_count' => ceil(count($themesList) / 5),
                 'route_params' => array()
             );
 
-            //On retourne le tout
-
+        //On retourne le tout
         // On passe l'objet
         return $this->render('RTPlatformBundle:Advert:index.html.twig', array(
             'listTheme' => $listTheme,
@@ -107,8 +100,7 @@ class AdvertController extends Controller
         // On récupère l'entité correspondante à l'id $id
         $theme = $repository->find($id);
 
-        // $advert est donc une instance de OC\PlatformBundle\Entity\Advert
-        // ou null si l'id $id  n'existe pas, d'où ce if :
+
         if (null === $theme) {
             throw new NotFoundHttpException("Le thème d'id ".$id." n'existe pas.");
         }
@@ -152,7 +144,6 @@ class AdvertController extends Controller
             $form->handleRequest($request);
 
             // On vérifie que les valeurs entrées sont correctes
-            // (Nous verrons la validation des objets en détail dans le prochain chapitre)
             if ($form->isValid()) {
                 $discussion->setTheme($theme);
                 $discussion->setPseudo($user);
@@ -161,9 +152,9 @@ class AdvertController extends Controller
                 $em->persist($discussion);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistrée !');
+                //$request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistrée !');
 
-                // On redirige vers la page de visualisation de l'annonce nouvellement créée
+                // On redirige vers la page de visualisation de la discussion nouvellement créée
                 return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
             }
         }
@@ -220,7 +211,7 @@ class AdvertController extends Controller
                 $em->persist($theme);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Thème bien enregistré !');
+               // $request->getSession()->getFlashBag()->add('notice', 'Thème bien enregistré !');
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
@@ -341,7 +332,7 @@ class AdvertController extends Controller
                 $em->persist($theme);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Thème bien enregistré !');
+               // $request->getSession()->getFlashBag()->add('notice', 'Thème bien enregistré !');
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->redirectToRoute('rt_platform_view', array('id' => $theme->getId()));
@@ -404,7 +395,7 @@ class AdvertController extends Controller
                 $em->persist($discussion);
                 $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistré !');
+             //   $request->getSession()->getFlashBag()->add('notice', 'Discussion bien enregistré !');
 
                 // On redirige vers la page de visualisation de l'annonce nouvellement créée
                 return $this->redirectToRoute('rt_platform_view', array('id' => $discussion->getTheme()->getId()));
@@ -443,7 +434,7 @@ class AdvertController extends Controller
             $em->remove($theme);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('info', "Le thème a bien été supprimé.");
+           // $request->getSession()->getFlashBag()->add('info', "Le thème a bien été supprimé.");
 
             return $this->redirectToRoute('rt_platform_home');
         }
@@ -474,7 +465,7 @@ class AdvertController extends Controller
             $em->remove($discussion);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('info', "La discussion a bien été supprimée.");
+         //   $request->getSession()->getFlashBag()->add('info', "La discussion a bien été supprimée.");
 
             return $this->redirectToRoute('rt_platform_view', array('id' => $discussion->getTheme()->getId()));
            // return $this->redirectToRoute('rt_platform_home');
