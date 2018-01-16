@@ -35,8 +35,9 @@
         {#<h4>Les derniers thèmes ajoutés : </h4>
         {{ render(controller("RTPlatformBundle:Advert:menu")) }}#}
 </div>
+
 <div class="main-content">
-{% block body %}
+    {% block body %}
 {% endblock %}
 </div>
 <div style="margin-bottom: 50px;">
@@ -53,5 +54,44 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 {% endblock %}
+<script>
+    $(function() {
+        // note: this could be debounced, but
+        // performance seemed fine so I opted
+        // to keep things simple
+        $('body').on('mousemove', function(e) {
+            // fish positional values
+            var $fish = $('.container');
+            var fishX = $fish.offset().left + $fish.width() * 0.5;
+            var fishY = $fish.offset().top + $fish.height() * 0.8;
+            var minLookDif = $fish.height() * 0.2;
 
+            // cursor positional values
+            var mouseX = e.clientX;
+            var mouseY = e.clientY;
+
+            // adjust which side fish is facing
+            $flip = $('.flip');
+            if (mouseX < fishX) {
+                $flip.addClass('flipped');
+            } else {
+                $flip.removeClass('flipped');
+            }
+
+            // adjust gaze of fish pupil
+            var $look = $('.look');
+            $look.removeClass('look-up look-down');
+            if (Math.abs(mouseY - fishY) > minLookDif) {
+                $look.addClass(mouseY < fishY ? 'look-up' : 'look-down');
+            }
+        });
+    });
+
+    $( "#clickme" ).click(function() {
+        $( "#ajout-discussion" ).toggle( "slow" );
+    });
+    $(".button").on("click", function() {
+        $(this).html($(this).html() == 'OUVRIR' ? 'FERMER' : 'OUVRIR');
+    });jQuery
+</script>
 </html>
